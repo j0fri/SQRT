@@ -2,7 +2,7 @@ default: main
 all: main
 
 CXX = g++
-CXXFLAGS = -std=c++20 -Wall -O0 -g -I ./
+CXXFLAGS = -Wall -O0 -g
 
 HDRS = DataGenerator.h
 OBJS = DataGenerator.o
@@ -11,7 +11,7 @@ OBJS = DataGenerator.o
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 main: main.o $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(SIMLIBS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 .PHONY: clean
 clean:

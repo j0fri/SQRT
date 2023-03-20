@@ -2,7 +2,7 @@ default: main
 all: main
 
 CXX = g++
-CXXFLAGS = -Wall -O0 -g
+CXXFLAGS = -Wall -O0 -g -std=c++11
 
 HDRS = DataGenerator.h
 OBJS = DataGenerator.o

@@ -32,28 +32,31 @@
 //}
 
 //initial guess by power
-double MySqrt::sqrt(double x) {
-    long long yi = ((*(long long*) &x >> 52) - 1023) >> 1; //Get half power
-    yi = ((((yi + 1023) << 1) | 1UL) << 51); //Double format
-    double y = *(double*) &yi;
-    y -= 0.5*(y - x/y);
-    y -= 0.5*(y - x/y);
-    y -= 0.5*(y - x/y);
-    y -= 0.5*(y - x/y);
-    return y;
-}
-
-//initial guess by power
 //double MySqrt::sqrt(double x) {
 //    long long yi = ((*(long long*) &x >> 52) - 1023) >> 1; //Get half power
 //    yi = ((((yi + 1023) << 1) | 1UL) << 51); //Double format
 //    double y = *(double*) &yi;
-//    double change;
-//    change = (y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    return y;
 //}
+
+//initial guess by power
+double MySqrt::sqrt(double x) {
+    long long yi = ((*(long long*) &x >> 52) - 1023) >> 1; //Get half power
+    yi = ((((yi + 1023) << 1) | 1UL) << 51); //Double format
+    double y = *(double*) &yi;
+    double change;
+    change = (y - x/y);
+    y -= 0.5*change;
+    change = (y - x/y);
+    y -= 0.5*change;
+    change = (y - x/y);
+    y -= 0.5*change;
+    change = (y - x/y);
+    y -= 0.5*change;
+    return y;
+}
 

@@ -7,7 +7,8 @@
 
 
 class MySqrt {
-
+public:
+    static double sqrt(double x);
 };
 
 

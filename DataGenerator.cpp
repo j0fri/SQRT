@@ -3,15 +3,14 @@
 //
 
 #include "DataGenerator.h"
-#include <chrono>
-#include <thread>
+#include <random>
+#include <cmath>
 
-std::vector<double> DataGenerator::generateData(unsigned int N) {
+std::vector<double> DataGenerator::generateLargeData(unsigned int N) {
     std::vector<double> data = std::vector<double>(N);
-    using namespace std::this_thread; // sleep_for, sleep_until
-    using namespace std::chrono; // nanoseconds, system_clock, seconds
-
-    sleep_for(nanoseconds(10));
-    sleep_until(system_clock::now() + seconds(1));
+    double max = std::numeric_limits<double>::max();
+    for(unsigned int i = 0; i < N; ++i){
+        data[i] = (double)std::rand()/RAND_MAX/100*std::sqrt(max);
+    }
     return data;
 }

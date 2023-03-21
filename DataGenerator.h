@@ -9,7 +9,7 @@
 
 class DataGenerator {
 public:
-    static std::vector<double> generateData(unsigned int N);
+    static std::vector<double> generateLargeData(unsigned int N);
 };
 
 

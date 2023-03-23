@@ -31,7 +31,7 @@ void standardTest(double (*func)(double)){
 
 int main(int argc, char **argv) {
     unsigned int N = 10000;
-    unsigned int reps = 50000;
+    unsigned int reps = 10000;
 
     auto data = DataGenerator::generateLargeData(N);
     std::vector<double> outputLibrary = std::vector<double>(N);
@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 //    std::cout << "library: " << outputLibrary[2] << std::endl;
 //    std::cout << "mySqrt: " << myOutput[2] << std::endl << std::endl;
 
-   // standardTest(MySqrt::sqrt);
+    standardTest(MySqrt::sqrt);
 }
 
 

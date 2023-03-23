@@ -16,10 +16,11 @@
 //    }
 //    return y;
 //}
+//Benchmark: 3.3s per million
 
 //Just guessing
 //double MySqrt::sqrt(double x) {
-//    double y = 1e+75;
+//    double y = 10;
 //    y -= (y*y - x)/(2*y);
 //    y -= (y*y - x)/(2*y);
 //    y -= (y*y - x)/(2*y);
@@ -30,33 +31,36 @@
 //    y -= (y*y - x)/(2*y);
 //    return y;
 //}
+//Benchmark: 0.017 per million
 
 //initial guess by power
 //double MySqrt::sqrt(double x) {
-//    long long yi = ((*(long long*) &x >> 52) - 1023) >> 1; //Get half power
-//    yi = ((((yi + 1023) << 1) | 1UL) << 51); //Double format
-//    double y = *(double*) &yi;
+//    double pow = 1;
+//    while(pow*pow < x){
+//        pow *= 10;
+//    }
+//    double y = pow;
+//    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    y -= 0.5*(y - x/y);
 //    return y;
 //}
+//Benchmark: 0.17s per million.
 
-//initial guess by power
+//initial guess by power with bitshift
 double MySqrt::sqrt(double x) {
     long long yi = ((*(long long*) &x >> 52) - 1023) >> 1; //Get half power
     yi = ((((yi + 1023) << 1) | 1UL) << 51); //Double format
     double y = *(double*) &yi;
-    double change;
-    change = (y - x/y);
-    y -= 0.5*change;
-    change = (y - x/y);
-    y -= 0.5*change;
-    change = (y - x/y);
-    y -= 0.5*change;
-    change = (y - x/y);
-    y -= 0.5*change;
+    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
     return y;
 }
-
+//Benchmark: 0.0068 per million :)

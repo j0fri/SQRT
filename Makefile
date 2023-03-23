@@ -27,4 +27,9 @@ profiler: main
 	collect -o profiler.er ./main
 	analyzer profiler.er
 
+.PHONY: push
+push:
+	git add .
+	git commit -m "asdf"
+	git push
 

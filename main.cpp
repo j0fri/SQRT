@@ -18,7 +18,8 @@ void benchmark(std::vector<double>& data, std::vector<double>& output, double (*
 }
 
 void standardTest(double (*func)(double)){
-    std::vector<int> powers = {-100, -10, 1, 2, 6, 100};
+    std::vector<int> powers = {-100, -10, 0, 1, 2, 6, 100};
+    //std::vector<int> powers = {0};
     for (auto power: powers){
         double x = 2 * std::pow(10,power);
         std::cout << std::setprecision(10);

@@ -68,7 +68,7 @@
 //Benchmark: 0.0068 per million :)
 
 //Helpers:
-inline double log2approx(const double& x){
+double log2approx(const double& x){
     //std::cout << std::endl << "Forward: " << std::endl;
     double xi = (double) (*(long long*) &x);
     //std::cout << "initial cast: " << xi << ", bits: " << std::bitset<64>(*(long long*) &xi) << std::endl;
@@ -81,7 +81,7 @@ inline double log2approx(const double& x){
     double log = *(double *) &result + 0.043 - 1023;
     return log;
 }
-inline double exp2approx(double x){
+double exp2approx(double x){
     //std::cout << std::endl<< std::endl<< std::endl<< "Backward: " << std::endl;
     //std::cout << std::endl << "x: " << x << ", bits: " << std::bitset<64>(*(unsigned long long int*)&x) << std::endl;
     double invSum = x - 0.043 + 1023;
@@ -106,9 +106,9 @@ double MySqrt::sqrt(double x) {
     double log2 = log2approx(x);
     log2 /= 2;
     double y = exp2approx(log2);
-    y -= 0.5*(y - x/y);
-    y -= 0.5*(y - x/y);
-    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
+//    y -= 0.5*(y - x/y);
     return y;
 }
 //Benchmark: 0.0068 per million :)

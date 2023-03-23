@@ -32,7 +32,7 @@ void standardTest(double (*func)(double)){
 
 int main(int argc, char **argv) {
     unsigned int N = 10000;
-    unsigned int reps = 100000;
+    unsigned int reps = 1000000;
 
     auto data = DataGenerator::generateLargeData(N);
     std::vector<double> outputLibrary = std::vector<double>(N);

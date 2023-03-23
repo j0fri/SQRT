@@ -112,7 +112,7 @@ double MySqrt::sqrt(double x) {
 
     //double y = exp2approx(log2);
     double invSum = (*(double *) &result)/2 - 0.0215 + 511.5;
-    
+
     //std::cout << std::endl << "invSum: " << invSum << ", bits: " << std::bitset<64>(result) << std::endl;
     //std::cout << "newexp: " << newexp << std::endl;
     //std::cout << "exp: " << exp << std::endl << ", bits: " << std::bitset<64>(exp) <<  std::endl;
@@ -123,9 +123,9 @@ double MySqrt::sqrt(double x) {
     //std::cout << "xi: " << *(double*) &xi << std::endl <<", bits: " << std::bitset<64>(xi) <<  std::endl;
 
     double y = *(double*) &xi2;
-//    y -= 0.5*(y - x/y);
-//    y -= 0.5*(y - x/y);
-//    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
+    y -= 0.5*(y - x/y);
     return y;
 }
-//Benchmark: 0.0068 per million :)
+//Benchmark: 0.0051 per million :)
